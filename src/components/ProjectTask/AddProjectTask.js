@@ -49,7 +49,7 @@ class AddProjectTask extends Component {
                 Back to Board
               </Link>
               <h4 className="display-4 text-center">
-                Add /Update Project Task
+                Add / Update Project Task
               </h4>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
