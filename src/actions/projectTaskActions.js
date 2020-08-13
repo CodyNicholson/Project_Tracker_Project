@@ -8,7 +8,7 @@ import {
 
 export const addProjectTask = (project_task, history) => async dispatch => {
     try {
-        await axios.post("https://project-board-api.herokuapp.com/api/board", project_task);
+        await axios.post("https://project-board-api.herokuapp.com/api/board/task", project_task);
         history.push("/");
         dispatch({
             type: GET_ERRORS,
@@ -23,7 +23,7 @@ export const addProjectTask = (project_task, history) => async dispatch => {
 };
 
 export const getBacklog = () => async dispatch => {
-    const res = await axios.get("https://project-board-api.herokuapp.com/api/board/all");
+    const res = await axios.get("http://project-board-api.herokuapp.com/api/board/all");
     dispatch({
         type: GET_PROJECT_TASKS,
         payload: res.data
@@ -36,7 +36,7 @@ export const deleteProjectTask = pt_id => async dispatch => {
             `You are deleting project task ${pt_id}, this action cannot be undone`
         )
     ) {
-        await axios.delete(`https://project-board-api.herokuapp.com/api/board/${pt_id}`);
+        await axios.delete(`http://project-board-api.herokuapp.com/api/board/${pt_id}`);
         dispatch({
             type: DELETE_PROJECT_TASK,
             payload: pt_id
@@ -46,7 +46,7 @@ export const deleteProjectTask = pt_id => async dispatch => {
 
 export const getProjectTask = (pt_id, history) => async dispatch => {
     try {
-        const res = await axios.get(`https://project-board-api.herokuapp.com/api/board/${pt_id}`);
+        const res = await axios.get(`http://project-board-api.herokuapp.com/api/board/${pt_id}`);
         dispatch({
             type: GET_PROJECT_TASK,
             payload: res.data
