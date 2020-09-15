@@ -9,6 +9,8 @@ import {
 const domain_url = "https://project-tracking-api-app.herokuapp.com"
 
 export const addProjectTask = (project_task, history) => async dispatch => {
+    console.log("Project task in addProjectTask Action");
+    console.log(project_task);
     try {
         await axios.post(`${domain_url}/api/board/task`, project_task);
         history.push("/");

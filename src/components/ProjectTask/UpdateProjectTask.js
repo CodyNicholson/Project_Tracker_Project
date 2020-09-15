@@ -12,6 +12,7 @@ class UpdateProjectTask extends Component {
     super();
     this.state = {
       id: "",
+      projectId: "",
       summary: "",
       acceptanceCriteria: "",
       status: "",
@@ -26,10 +27,11 @@ class UpdateProjectTask extends Component {
       this.setState({ errors: nextProps.errors });
     }
 
-    const { id, summary, acceptanceCriteria, status } = nextProps.project_task;
+    const { id, projectId, summary, acceptanceCriteria, status } = nextProps.project_task;
 
     this.setState({
       id,
+      projectId,
       summary,
       acceptanceCriteria,
       status
@@ -45,6 +47,7 @@ class UpdateProjectTask extends Component {
     e.preventDefault();
     const updatedTask = {
       id: this.state.id,
+      projectId: this.state.projectId,
       summary: this.state.summary,
       acceptanceCriteria: this.state.acceptanceCriteria,
       status: this.state.status

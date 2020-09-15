@@ -9,6 +9,7 @@ class AddProjectTask extends Component {
   constructor() {
     super();
     this.state = {
+      projectId: "Project 1",
       summary: "",
       acceptanceCriteria: "",
       status: "",
@@ -30,11 +31,12 @@ class AddProjectTask extends Component {
   onSubmit(e) {
     e.preventDefault();
     const newProjectTask = {
+      projectId: this.state.projectId,
       summary: this.state.summary,
       acceptanceCriteria: this.state.acceptanceCriteria,
       status: this.state.status
     };
-    // console.log(newProjectTask);
+    //console.log(newProjectTask);
     this.props.addProjectTask(newProjectTask, this.props.history);
   }
 
