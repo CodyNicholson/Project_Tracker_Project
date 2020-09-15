@@ -32,23 +32,23 @@ export const getBacklog = () => async dispatch => {
     });
 };
 
-export const deleteProjectTask = pt_id => async dispatch => {
+export const deleteProjectTask = project_task_id => async dispatch => {
     if (
         window.confirm(
-            `You are deleting project task ${pt_id}, this action cannot be undone`
+            `You are deleting project task ${project_task_id}, this action cannot be undone`
         )
     ) {
-        await axios.delete(`${domain_url}/api/board/${pt_id}`);
+        await axios.delete(`${domain_url}/api/board/${project_task_id}`);
         dispatch({
             type: DELETE_PROJECT_TASK,
-            payload: pt_id
+            payload: project_task_id
         });
     }
 };
 
-export const getProjectTask = (pt_id, history) => async dispatch => {
+export const getProjectTask = (project_task_id, history) => async dispatch => {
     try {
-        const res = await axios.get(`${domain_url}/api/board/${pt_id}`);
+        const res = await axios.get(`${domain_url}/api/board/${project_task_id}`);
         dispatch({
             type: GET_PROJECT_TASK,
             payload: res.data

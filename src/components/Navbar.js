@@ -7,12 +7,7 @@ export default function Navbar() {
         <a className="navbar-brand" href="/">
           Project Task Tool
         </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#mobile-nav"
-        >
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
           <span className="navbar-toggler-icon" />
         </button>
       </div>

@@ -17,13 +17,8 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Route exact path="/" component={ProjectBoard} />
-
             <Route exact path="/addProjectTask" component={AddProjectTask} />
-            <Route
-              exact
-              path="/updateProjectTask/:pt_id"
-              component={UpdateProjectTask}
-            />
+            <Route exact path="/updateProjectTask/:pt_id" component={UpdateProjectTask} />
           </div>
         </Router>
       </Provider>

@@ -37,8 +37,8 @@ class UpdateProjectTask extends Component {
   }
 
   componentDidMount() {
-    const { pt_id } = this.props.match.params;
-    this.props.getProjectTask(pt_id);
+    const { project_task_id } = this.props.match.params;
+    this.props.getProjectTask(project_task_id);
   }
 
   onSubmit(e) {

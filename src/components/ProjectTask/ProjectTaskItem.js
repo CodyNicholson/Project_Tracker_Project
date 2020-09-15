@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import { deleteProjectTask } from "../../actions/projectTaskActions";
 
 class ProjectTaskItem extends Component {
-  onDeleteClick(pt_id) {
-    this.props.deleteProjectTask(pt_id);
+  onDeleteClick(project_task_id) {
+    this.props.deleteProjectTask(project_task_id);
   }
 
   render() {
