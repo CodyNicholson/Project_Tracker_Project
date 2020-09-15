@@ -9,7 +9,7 @@ class AddProjectTask extends Component {
   constructor() {
     super();
     this.state = {
-      projectId: "Project 1",
+      projectId: "",
       summary: "",
       acceptanceCriteria: "",
       status: "",
