@@ -6,13 +6,13 @@ import {
     GET_PROJECT_TASK
 } from "./types";
 
-const domain_url = "https://project-tracking-api-app.herokuapp.com"
+const domain_url = "https://project-tracker-api-app.herokuapp.com"
 
-export const addProjectTask = (project_task, history) => async dispatch => {
+export const addProjectTask = (projectTask, history) => async dispatch => {
     console.log("Project task in addProjectTask Action");
-    console.log(project_task);
+    console.log(projectTask);
     try {
-        await axios.post(`${domain_url}/api/board/task`, project_task);
+        await axios.post(`${domain_url}/project/${projectTask.projectId}/task`, projectTask);
         history.push("/");
         dispatch({
             type: GET_ERRORS,
@@ -27,30 +27,31 @@ export const addProjectTask = (project_task, history) => async dispatch => {
 };
 
 export const getBacklog = () => async dispatch => {
-    const res = await axios.get(`${domain_url}/api/board/all`);
+    const res = await axios.get(`${domain_url}/project/`);
+    console.log(res);
     dispatch({
         type: GET_PROJECT_TASKS,
-        payload: res.data
+        payload: res.data.data
     });
 };
 
-export const deleteProjectTask = project_task_id => async dispatch => {
+export const deleteProjectTask = (projectTaskId, projectId) => async dispatch => {
     if (
         window.confirm(
-            `You are deleting project task ${project_task_id}, this action cannot be undone`
+            `You are deleting project task ${projectTaskId}, this action cannot be undone`
         )
     ) {
-        await axios.delete(`${domain_url}/api/board/${project_task_id}`);
+        await axios.delete(`${domain_url}/project/${projectId}/task/${projectTaskId}`);
         dispatch({
             type: DELETE_PROJECT_TASK,
-            payload: project_task_id
+            payload: projectTaskId
         });
     }
 };
 
-export const getProjectTask = (project_task_id, history) => async dispatch => {
+export const getProjectTask = (projectTaskId, projectId, history) => async dispatch => {
     try {
-        const res = await axios.get(`${domain_url}/api/board/${project_task_id}`);
+        const res = await axios.get(`${domain_url}/project/${projectId}/task/${projectTaskId}`);
         dispatch({
             type: GET_PROJECT_TASK,
             payload: res.data
